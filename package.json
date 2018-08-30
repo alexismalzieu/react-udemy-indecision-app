@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "npx babel src/app.js --out-file public/scripts/app.js --presets=es2015,react",
+    "live": "live-server public"
+  },
   "dependencies": {
+    "styled-jsx": "^3.0.2"
+  },
+  "devDependencies": {
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "styled-jsx": "^3.0.2"
+    "babel-cli": "^6.26.0"
   }
 }
