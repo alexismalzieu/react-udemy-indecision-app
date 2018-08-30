@@ -3,17 +3,15 @@ console.log('App is running');
 
 //JSX
 
-var app = {
+const app = {
   title: 'Indecision app',
-  subtitle: 'This is the indecision app',
-  options: ['One','Two']
+  subtitle: 'This is the indecision app'
 }
 
-var template = (
+const template = (
   <div>
     <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    {app.options.length > 0 ? 'Here are the options' : 'No options'}
+    <p>{app.subtitle}</p>
     <ol>
       <li>Item one</li>
       <li>Item two</li>
@@ -21,31 +19,31 @@ var template = (
   </div>
 );
 
-var user = {
-  name: 'Alexis',
-  age: 25,
-  location: 'Lille'
-}
+let count = 0
 
-var userName = 'Alexis';
-var userAge = 22;
-var userLocation = 'Lille'
+const addOne = () => {
+  console.log('addOne');
+};
 
-function getLocation(location) {
-  if(location){
-    return <p>Location: {location}</p>;
-  }
-}
+const minusOne = () => {
+  console.log('minusOne');
+};
 
+const reset = () => {
+  console.log('reset');
+};
 
-var template2 = (
+const templateTwo = (
   <div>
-    <h1>{user.name ? user.name : 'Anonymous'}</h1>
-    {user.age>18 && <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
+    <h1>Count: {count}</h1>
+    <button onClick={addOne}> +1 </button>
+    <button onClick={minusOne}> -1 </button>
+        <button onClick={reset}> Reset </button>
+
   </div>
 );
 
-var appRoot = document.getElementById('app');
+console.log(templateTwo);
+const appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

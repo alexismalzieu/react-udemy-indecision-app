@@ -2,11 +2,11 @@
 
 console.log('App is running');
 
+//JSX
 
 var app = {
   title: 'Indecision app',
-  subtitle: 'This is the indecision app',
-  options: ['One', 'Two']
+  subtitle: 'This is the indecision app'
 };
 
 var template = React.createElement(
@@ -17,12 +17,11 @@ var template = React.createElement(
     null,
     app.title
   ),
-  app.subtitle && React.createElement(
+  React.createElement(
     'p',
     null,
     app.subtitle
   ),
-  app.options.length > 0 ? 'Here are the options' : 'No options',
   React.createElement(
     'ol',
     null,
@@ -39,44 +38,47 @@ var template = React.createElement(
   )
 );
 
-var user = {
-  name: 'Alexis',
-  age: 25,
-  location: 'Lille'
+var count = 0;
+
+var addOne = function addOne() {
+  console.log('addOne');
 };
 
-var userName = 'Alexis';
-var userAge = 22;
-var userLocation = 'Lille';
+var minusOne = function minusOne() {
+  console.log('minusOne');
+};
 
-function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      'p',
-      null,
-      'Location: ',
-      location
-    );
-  }
-}
+var reset = function reset() {
+  console.log('reset');
+};
 
-var template2 = React.createElement(
+var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    user.name ? user.name : 'Anonymous'
+    'Count: ',
+    count
   ),
-  user.age > 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
+  React.createElement(
+    'button',
+    { onClick: addOne },
+    ' +1 '
   ),
-  getLocation(user.location)
+  React.createElement(
+    'button',
+    { onClick: minusOne },
+    ' -1 '
+  ),
+  React.createElement(
+    'button',
+    { onClick: reset },
+    ' Reset '
+  )
 );
 
+console.log(templateTwo);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
