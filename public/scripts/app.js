@@ -2,7 +2,6 @@
 
 console.log('App is running');
 
-//JSX
 
 var app = {
   title: 'Indecision app',
