@@ -5,6 +5,7 @@ class IndecisionApp extends React.Component {
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
     this.handlePick = this.handlePick.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
+    this.handleDeleteOption = this.handleDeleteOption.bind(this);
 
     this.state = {
       options : props.options
@@ -12,11 +13,13 @@ class IndecisionApp extends React.Component {
   }
 
   handleDeleteOptions(){
-    this.setState(() => {
-      return{
-        options: []
-      }
-    })
+    this.setState(() => ({ options: [] }));
+  };
+
+  handleDeleteOption(optionToRemove){
+    this.setState((state)=>({
+      options : state.options.filter((option) => option !== optionToRemove)
+    }));
   };
 
   handlePick(){
@@ -33,11 +36,7 @@ class IndecisionApp extends React.Component {
       return 'This option already exists';
     }
 
-    this.setState((state) => {
-      return {
-        options : state.options.concat(option)
-      }
-    });
+    this.setState((state) => ({options : state.options.concat(option) }));
   };
 
   render() {
@@ -53,6 +52,7 @@ class IndecisionApp extends React.Component {
         <Options
           options={this.state.options}
           handleDeleteOptions={this.handleDeleteOptions}
+          handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption handleAddOption={this.handleAddOption}/>
       </div>
@@ -96,7 +96,12 @@ const Options = (props) => {
     <div>
       <button onClick={props.handleDeleteOptions}>Remove All</button>
       {
-        props.options.map((option) => <Option key={option} optionText={option} />)
+        props.options.map((option) => (
+          <Option
+          key={option}
+          optionText={option}
+          handleDeleteOption={props.handleDeleteOption} />
+        ))
       }
     </div>
   );
@@ -107,6 +112,13 @@ const Option = (props) => {
   return (
     <div>
       {props.optionText}
+      <button
+      onClick={(e) => {
+        props.handleDeleteOption(props.optionText)
+      }}
+      >
+      Remove
+      </button>
     </div>
   );
 };
@@ -129,9 +141,7 @@ class AddOption extends React.Component {
     const option = e.target.elements.option.value.trim();
     const error = this.props.handleAddOption(option);
 
-    this.setState(() => {
-      return { error };
-    });
+    this.setState(() => ({ error }));
   }
 
   render() {
