@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "npx babel src/app.js --out-file public/scripts/app.js --presets=es2015,react",
+    "build:playground": "npx babel src/playground/build-it-visible.js --out-file public/scripts/app.js --presets=es2015,react",
     "build:counter": "npx babel src/playground/counter-example.js --out-file public/scripts/app.js --presets=es2015,react",
-    "build:playground": "npx babel src/playground/es6-classes-1.js --out-file public/scripts/app.js --presets=es2015,react",
     "live": "live-server public"
   },
   "dependencies": {
