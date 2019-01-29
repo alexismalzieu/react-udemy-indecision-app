@@ -29,7 +29,6 @@ class IndecisionApp extends React.Component {
   };
 
   handleAddOption(option){
-
     if(!option){
       return 'Enter valid value to add';
     } else if (this.state.options.indexOf(option) > -1) {
@@ -156,15 +155,5 @@ class AddOption extends React.Component {
     );
   }
 }
-
-
-const User = (props) => {
-  return(
-    <div>
-      <p>Name: {props.name}</p>
-      <p>Age: {props.age}</p>
-    </div>
-  );
-};
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

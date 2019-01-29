@@ -55,7 +55,6 @@ var IndecisionApp = function (_React$Component) {
   }, {
     key: 'handleAddOption',
     value: function handleAddOption(option) {
-
       if (!option) {
         return 'Enter valid value to add';
       } else if (this.state.options.indexOf(option) > -1) {
@@ -222,24 +221,5 @@ var AddOption = function (_React$Component2) {
 
   return AddOption;
 }(React.Component);
-
-var User = function User(props) {
-  return React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'p',
-      null,
-      'Name: ',
-      props.name
-    ),
-    React.createElement(
-      'p',
-      null,
-      'Age: ',
-      props.age
-    )
-  );
-};
 
 ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
