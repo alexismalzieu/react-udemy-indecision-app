@@ -4,21 +4,24 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "babel src/app.js --out-file public/scripts/app.js --presets=env,react --watch",
+    "build": "webpack --watch",
+    "build-babel": "babel src/app.js --out-file public/scripts/app.js --presets=env,react --watch",
     "build:playground": "babel src/playground/build-it-visible.js --out-file public/scripts/app.js --presets=env,react --watch",
     "build:counter": "babel src/playground/counter-example.js --out-file public/scripts/app.js --presets=env,react --watch",
     "serve": "live-server public/"
   },
   "dependencies": {
-    "styled-jsx": "^3.0.2"
-  },
-  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "styled-jsx": "^3.0.2",
+    "webpack": "^4.29.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.2.1"
   }
 }
