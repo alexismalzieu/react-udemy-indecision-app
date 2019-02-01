@@ -18,7 +18,10 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "live-server": "^1.2.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "styled-jsx": "^3.0.2",
+    "validator": "^10.11.0",
     "webpack": "^4.29.0"
   },
   "devDependencies": {
