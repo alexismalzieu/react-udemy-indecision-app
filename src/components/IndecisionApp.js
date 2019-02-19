@@ -3,7 +3,7 @@ import AddOption from './AddOption';
 import Action from './Action';
 import Header from './Header';
 import Options from './Options';
-import OptionModal from './OptionModal'
+import OptionModal from './OptionModal';
 
 export default class IndecisionApp extends React.Component {
   state = {
@@ -13,6 +13,9 @@ export default class IndecisionApp extends React.Component {
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   };
+  handleClearSelectedOption = () => {
+    this.setState(() => ({ selectedOption: undefined }));
+  }
   handleDeleteOption = (optionToRemove) => {
     this.setState((prevState) => ({
       options: prevState.options.filter((option) => optionToRemove !== option)
@@ -36,12 +39,6 @@ export default class IndecisionApp extends React.Component {
       options: prevState.options.concat(option)
     }));
   };
-  handleClearSelectedOptions = () => {
-    this.setState(() => ({
-      selectedOption : undefined
-    }));
-  };
-
   componentDidMount() {
     try {
       const json = localStorage.getItem('options');
@@ -74,18 +71,20 @@ export default class IndecisionApp extends React.Component {
             hasOptions={this.state.options.length > 0}
             handlePick={this.handlePick}
           />
-          <Options
-            options={this.state.options}
-            handleDeleteOptions={this.handleDeleteOptions}
-            handleDeleteOption={this.handleDeleteOption}
-          />
-          <AddOption
-            handleAddOption={this.handleAddOption}
-          />
+          <div className="widget">
+            <Options
+              options={this.state.options}
+              handleDeleteOptions={this.handleDeleteOptions}
+              handleDeleteOption={this.handleDeleteOption}
+            />
+            <AddOption
+              handleAddOption={this.handleAddOption}
+            />
+          </div>
         </div>
         <OptionModal
           selectedOption={this.state.selectedOption}
-          handleClearSelectedOptions={this.handleClearSelectedOptions}
+          handleClearSelectedOption={this.handleClearSelectedOption}
         />
       </div>
     );
